@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập tạo todoList</title>
+</head>
+
+<style>
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td, tr{
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+</style>
+<body>
+    <div class="todo--container">
+        <input type="text" id="title" name="" placeholder="Nhập tiêu đề công việc">
+        <input type="date" id="startDate" name="" placeholder="Nhập thời gian bắt đầu">
+        <input type="date" id="endDate" name="" placeholder="Nhập thời gian kết thúc">
+        <select name="" id="type">
+            <option value="">Chọn loại công việc</option>
+            <option value="Học tập">Học tập</option>
+            <option value="Vui chơi">Vui chơi</option>
+            <option value="Làm việc">Làm việc</option>
+        </select>
+        <button id="addtodo">Add công việc</button>
+    </div>
+
+    <div id="todoList">
+        <h2>Hiển thị danh sách công việc</h2>
+        <div>
+            <table>
+                <tr>
+                    <th>Tiêu đề công việc</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Thời gian kết thúc</th>
+                    <th>Loại công việc</th>
+                </tr>
+
+                <tbody id="list"></tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.getElementById("addtodo").addEventListener("click", () => {
+        var title = document.getElementById("title").value;
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+        var type = document.getElementById("type").value;
+    
+        const userId = document.createElement("tr");
+        userId.innerHTML = `
+            <td>${title}</td>
+            <td>${startDate}</td>
+            <td>${endDate}</td>
+            <td>${type}</td>
+            `
+
+        document.getElementById("list").appendChild(userId)
+        });
+       
+</script>
+</html>

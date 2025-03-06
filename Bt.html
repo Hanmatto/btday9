@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+</style>
+
+<body>
+    <div class="todo--container">
+        <input type="text" id="title" name="" placeholder="Nhập tiêu đề công việc">
+        <input type="date" id="startDate" name="" placeholder="Nhập thời gian bắt đầu">
+        <input type="date" id="endDate" name="" placeholder="Nhập thời gian kết thúc">
+        <select name="" id="type">
+            <option value="">Chọn loại công việc</option>
+            <option value="Học tập">Học tập</option>
+            <option value="Vui chơi">Vui chơi</option>
+            <option value="Làm việc">Làm việc</option>
+        </select>
+        <button onclick="addtodo()">Add công việc</button>
+    </div>
+
+    <div id="todoList">
+        <h2>Hiển thị danh sách công việc</h2>
+        <div>
+            <table>
+                <tr>
+                    <th>Tiêu đề công việc</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Thời gian kết thúc</th>
+                    <th>Loại công việc</th>
+                </tr>
+
+                <tbody id="list"></tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let todoList = [];
+
+        function addtodo() {
+            let title = document.getElementById('title').value;
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+            let type = document.getElementById('type').value;
+
+            const tasktodo = [title, startDate, endDate, type];
+            todoList.push(tasktodo);
+
+            var task = `<tr>
+                    <td>`+ tasktodo[0] +`</td>
+                    <td>`+ tasktodo[1] +`</td>
+                    <td>`+ tasktodo[2] +`</td>
+                    <td>`+ tasktodo[3] +`</td>
+                </tr>`
+            
+            document.getElementById('list').innerHTML += task;
+        }
+    </script>
+</body>
+
+</html>
